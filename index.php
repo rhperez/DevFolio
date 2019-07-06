@@ -12,7 +12,7 @@
   <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Bootstrap CSS File -->
-  <link href="../lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../bootstrap-4.3.1/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Libraries CSS Files -->
   <link href="../lib/fontawesome-free/css/all.min.css" rel="stylesheet">
@@ -23,6 +23,9 @@
 
   <!-- Main Stylesheet File -->
   <link href="css/style-sky-blue.css" rel="stylesheet">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Slab&display=swap" rel="stylesheet">
 
 
 </head>
@@ -230,7 +233,7 @@
   <!--/ Nav Star /-->
   <nav class="navbar navbar-b navbar-trans navbar-expand-md fixed-top" id="mainNav">
     <div class="container">
-      <a class="navbar-brand js-scroll" href="#page-top">Digitable</a>
+      <a class="navbar-brand js-scroll" href="#page-top" style="font-family: 'Roboto Slab', serif;">digitable</a>
       <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarDefault"
         aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span></span>
@@ -270,7 +273,7 @@
       <div class="table-cell">
         <div class="container">
           <!--<p class="display-6 color-d">Hello, world!</p>-->
-          <h1 class="intro-title mb-4">Digitable</h1>
+          <img src="img/logo-white.png" style="height:100px;" class="img-fluid b-shadow-a mb-5" alt="Digitable">
           <p class="intro-subtitle"><span class="text-slider-items">Dream it,Code it,Make it real</span><strong class="text-slider"></strong></p>
           <!-- <p class="pt-3"><a class="btn btn-primary btn js-scroll px-4" href="#about" role="button">Learn More</a></p> -->
         </div>
@@ -935,7 +938,7 @@
   <script src="../lib/jquery/jquery.min.js"></script>
   <script src="../lib/jquery/jquery-migrate.min.js"></script>
   <script src="../lib/popper/popper.min.js"></script>
-  <script src="../lib/bootstrap/js/bootstrap.min.js"></script>
+  <script src="../bootstrap-4.3.1/js/bootstrap.min.js"></script>
   <script src="../lib/easing/easing.min.js"></script>
   <script src="../lib/counterup/jquery.waypoints.min.js"></script>
   <script src="../lib/counterup/jquery.counterup.js"></script>
