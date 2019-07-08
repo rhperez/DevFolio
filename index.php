@@ -6,6 +6,14 @@
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <meta content="" name="keywords">
   <meta content="" name="description">
+  <meta property="og:url" content="https://www.digitable.com.mx/home/index.php">
+  <meta property="og:title" content="Digitable">
+  <meta property="og:type" content="website">
+  <meta property="og:description" content="Desarrollo full-stack web y de apps">
+  <meta property="og:image" content="https://www.digitable.com.mx/home/img/og-image.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="200">
+  <meta property="og:image:height" content="200">
 
   <!-- Favicons -->
   <link href="img/favicon.png" rel="icon">
@@ -246,9 +254,6 @@
             <a class="nav-link js-scroll active" href="#home"><?php echo $titles['home'];?></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll" href="#about"><?php echo $titles['about'];?></a>
-          </li>
-          <li class="nav-item">
             <a class="nav-link js-scroll" href="#service"><?php echo $titles['services'];?></a>
           </li>
           <li class="nav-item">
@@ -256,6 +261,9 @@
           </li>
           <li class="nav-item">
             <a class="nav-link js-scroll" href="#blog"><?php echo $titles['blog'];?></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll" href="#about"><?php echo $titles['about'];?></a>
           </li>
           <li class="nav-item">
             <a class="nav-link js-scroll" href="#contact"><?php echo $titles['contact'];?></a>
@@ -266,8 +274,8 @@
   </nav>
   <!--/ Nav End /-->
 
-  <!--/ Intro Skew Star /-->
-  <div id="home" class="intro route bg-image" style="background-image: url(img/intro-bg.png)">
+  <!--/ Intro Skew Start /-->
+  <div id="home" class="intro route bg-image mb-5" style="background-image: url(img/intro-bg.png)">
     <div class="overlay-itro"></div>
     <div class="intro-content display-table">
       <div class="table-cell">
@@ -282,77 +290,7 @@
   </div>
   <!--/ Intro Skew End /-->
 
-  <section id="about" class="about-mf sect-pt4 route">
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-12">
-          <div class="box-shadow-full">
-            <div class="row">
-              <div class="col-md-6">
-                <div class="row">
-                  <div class="col-sm-3 col-md-3">
-                    <div class="about-img">
-                      <img src="img/profile.jpg" class="img-fluid rounded b-shadow-a" alt="">
-                    </div>
-                  </div>
-                  <div class="col-sm-9 col-md-9">
-                    <div class="about-info">
-                      <div class="row"><div class="title-s col-sm-3 col-md-4"><?php echo $labels['name'];?>: </div> <div class="col text-Left"><?php echo $texts['name'];?></div></div>
-                      <div class="row"><div class="title-s col-sm-3 col-md-4"><?php echo $labels['profile'];?>: </div> <div class="col text-left"><?php echo $texts['profile'];?></div></div>
-                      <div class="row"><div class="title-s col-sm-3 col-md-4"><?php echo $labels['email'];?>: </div> <div class="col text-left"><?php echo $texts['email'];?></div></div>
-                      <div class="row"><div class="title-s col-sm-3 col-md-4"><?php echo $labels['phone'];?>: </div> <div class="col text-left"><?php echo $texts['phone'];?></div></div>
-                    </div>
-                  </div>
-                </div>
-                <div class="skill-mf">
-                  <p class="title-s"><?php echo $labels['skills'];?></p>
-                  <?php
-                    foreach($skills as $skill) {
-                      ?>
-                      <div class="progress" style="height:20px;">
-                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width:<?php echo $skill[1]; ?>%; height:100%;" aria-valuenow="90" aria-valuemin="0"
-                          aria-valuemax="100">
-                          <div class="row">
-                            <div class="col text-left" style="margin-left:10px;"><b><?php echo $skill[0]; ?></b></div>
-                            <div class="col text-right" style="margin-right:10px;"><b><?php echo $skill[1]; ?>%</b></div>
-                          </div>
-                        </div>
-                      </div>
-                      <?php
-                    }
-                  ?>
-
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="about-me pt-4 pt-md-0">
-                  <div class="title-box-2">
-                    <h5 class="title-left">
-                      <?php echo $titles['about'];?>
-                    </h5>
-                  </div>
-                  <p class="lead">
-                    <?php echo $texts['about_me_p1'];?>
-                  </p>
-                  <p class="lead">
-                    <?php echo $texts['about_me_p2'];?>
-                  </p>
-                  <p class="lead">
-                    <?php echo $texts['about_me_p3'];?>
-                  </p>
-                  <p class="lead">
-                    <?php echo $texts['about_me_p4'];?>
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!--/ Section Services Star /-->
+  <!--/ Section Services Start /-->
   <section id="service" class="services-mf route">
     <div class="container">
       <div class="row">
@@ -517,7 +455,7 @@
     </div>
   </div>
 
-  <!--/ Section Portfolio Star /-->
+  <!--/ Section Portfolio Start /-->
   <section id="portfolio" class="portfolio-mf sect-pt4 route">
     <div class="container">
       <div class="row">
@@ -684,7 +622,7 @@
   </section>
   <!--/ Section Portfolio End /-->
 
-  <!--/ Section Testimonials Star /-->
+  <!--/ Section Testimonials Start /-->
   <div class="testimonials paralax-mf bg-image" style="background-image: url(img/overlay-bg.jpg)">
     <div class="overlay-mf"></div>
     <div class="container">
@@ -722,8 +660,9 @@
       </div>
     </div>
   </div>
+  <!--/ Section Testimonials End /-->
 
-  <!--/ Section Blog Star /-->
+  <!--/ Section Blog Start /-->
   <section id="blog" class="blog-mf sect-pt4 route">
     <div class="container">
       <div class="row">
@@ -832,7 +771,79 @@
   </section>
   <!--/ Section Blog End /-->
 
-  <!--/ Section Contact-Footer Star /-->
+  <!--/ Section About Start /-->
+  <section id="about" class="about-mf sect-pt4 route">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="box-shadow-full">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="row">
+                  <div class="col-sm-3 col-md-3">
+                    <div class="about-img">
+                      <img src="img/profile.jpg" class="img-fluid rounded b-shadow-a" alt="">
+                    </div>
+                  </div>
+                  <div class="col-sm-9 col-md-9">
+                    <div class="about-info">
+                      <div class="row"><div class="title-s col-sm-3 col-md-4"><?php echo $labels['name'];?>: </div> <div class="col text-Left"><?php echo $texts['name'];?></div></div>
+                      <div class="row"><div class="title-s col-sm-3 col-md-4"><?php echo $labels['profile'];?>: </div> <div class="col text-left"><?php echo $texts['profile'];?></div></div>
+                      <div class="row"><div class="title-s col-sm-3 col-md-4"><?php echo $labels['email'];?>: </div> <div class="col text-left"><?php echo $texts['email'];?></div></div>
+                      <div class="row"><div class="title-s col-sm-3 col-md-4"><?php echo $labels['phone'];?>: </div> <div class="col text-left"><?php echo $texts['phone'];?></div></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="skill-mf">
+                  <p class="title-s"><?php echo $labels['skills'];?></p>
+                  <?php
+                    foreach($skills as $skill) {
+                      ?>
+                      <div class="progress" style="height:20px;">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width:<?php echo $skill[1]; ?>%; height:100%;" aria-valuenow="90" aria-valuemin="0"
+                          aria-valuemax="100">
+                          <div class="row">
+                            <div class="col text-left" style="margin-left:10px;"><b><?php echo $skill[0]; ?></b></div>
+                            <div class="col text-right" style="margin-right:10px;"><b><?php echo $skill[1]; ?>%</b></div>
+                          </div>
+                        </div>
+                      </div>
+                      <?php
+                    }
+                  ?>
+
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="about-me pt-4 pt-md-0">
+                  <div class="title-box-2">
+                    <h5 class="title-left">
+                      <?php echo $titles['about'];?>
+                    </h5>
+                  </div>
+                  <p class="lead">
+                    <?php echo $texts['about_me_p1'];?>
+                  </p>
+                  <p class="lead">
+                    <?php echo $texts['about_me_p2'];?>
+                  </p>
+                  <p class="lead">
+                    <?php echo $texts['about_me_p3'];?>
+                  </p>
+                  <p class="lead">
+                    <?php echo $texts['about_me_p4'];?>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--/ Section About End /-->
+
+  <!--/ Section Contact-Footer Start /-->
   <section class="paralax-mf footer-paralax bg-image sect-mt4 route" style="background-image: url(img/overlay-bg.jpg)">
     <div class="overlay-mf"></div>
     <div class="container">
@@ -850,7 +861,9 @@
                   <div>
                       <form action="" method="post" role="form" class="contactForm">
                         <input type="hidden" name="lang" id="lang" value="<?php echo $lang;?>"></input>
-                      <div id="sendmessage" class="alert alert-primary"><?php echo $labels['message_sent'];?></div>
+                      <div id="sendmessage" class="alert alert-primary">
+                        <?php echo $labels['message_sent'];?>
+                      </div>
                       <div id="errormessage" class="alert alert-danger"></div>
                       <div class="row">
                         <div class="col-md-12 mb-3">
