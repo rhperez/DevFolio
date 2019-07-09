@@ -956,6 +956,10 @@ a:hover {
   color: #1e1e1e;
 }
 
+.blog-wrapper .post-meta ul a span {
+  color: #48abec;
+}
+
 .blog-wrapper .blockquote {
   border-left: 4px solid #48abec;
   padding: 18px;
