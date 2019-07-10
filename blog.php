@@ -1,8 +1,23 @@
+<?php
+  include_once "controllers/main_ctrlr.php";
+  if (!isset($_GET['title'])) {
+    $href_title = null;
+  } else {
+    $href_title = $_GET['title'];
+  }
+  $post = getPost($href_title);
+  if (!isset($_GET['lang'])) {
+    $lang = 'ES';
+  } else {
+    $lang = $_GET['lang'];
+  }
+  include_once "lang/lang.php";
+ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Digitable | Blog</title>
+  <title>Digitable | <?php echo $title; ?></title>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <meta content="" name="keywords">
   <meta content="" name="description">
@@ -35,7 +50,7 @@
   <!--/ Nav Star /-->
   <nav class="navbar navbar-b navbar-trans navbar-expand-md fixed-top" id="mainNav">
     <div class="container">
-      <a class="navbar-brand js-scroll" href="#page-top" style="font-family: 'Roboto Slab', serif;">digitable</a>
+      <a class="navbar-brand js-scroll" href="index.php" style="font-family: 'Roboto Slab', serif;">digitable</a>
       <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarDefault"
         aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span></span>
@@ -45,22 +60,22 @@
       <div class="navbar-collapse collapse justify-content-end" id="navbarDefault">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link js-scroll" href="index.html">Home</a>
+            <a class="nav-link js-scroll active" href="index.php#home"><?php echo $titles['home'];?></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll" href="#">About</a>
+            <a class="nav-link js-scroll" href="index.php#service"><?php echo $titles['services'];?></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll" href="#">Services</a>
+            <a class="nav-link js-scroll" href="index.php#portfolio"><?php echo $titles['portfolio'];?></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll" href="#">Work</a>
+            <a class="nav-link js-scroll" href="index.php#blog"><?php echo $titles['blog'];?></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll" href="#">Blog</a>
+            <a class="nav-link js-scroll" href="index.php#about"><?php echo $titles['about'];?></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll" href="#">Contact</a>
+            <a class="nav-link js-scroll" href="index.php#contact"><?php echo $titles['contact'];?></a>
           </li>
         </ul>
       </div>
@@ -97,70 +112,34 @@
         <div class="col-md-8">
           <div class="post-box">
             <div class="post-thumb">
-              <img src="img/post-1.jpg" class="img-fluid" alt="">
+              <img src="<?php echo $post['img_src']; ?>" class="img-fluid" alt="">
             </div>
             <div class="post-meta">
-              <h1 class="article-title">Lorem ipsum dolor sit amet consec tetur adipisicing</h1>
+              <h1 class="article-title"><?php echo $post['title']; ?></h1>
               <ul>
                 <li>
                   <span class="fas fa-user"></span>
-                  <a href="index.php#about">Roberto</a>
+                  <a href="<?php echo $post['author_href']; ?>"><?php echo $post['author']; ?></a>
                 </li>
                 <li>
                   <span class="fas fa-tag"></span>
-                  <a href="#">Web Design</a>
+                  <a href="#"><?php echo $post['tag']; ?></a>
                 </li>
                 <li>
                   <span class="fas fa-comments"></span>
-                  <a href="#comments"><span class="fb-comments-count" data-href="https://digitable.com.mx/home/blog-single.html"></span> comentarios</a>
+                  <a href="#comments"><span class="fb-comments-count" data-href="https://digitable.com.mx/home/blog.php?href=<?php echo $href;?>"></span> comentarios</a>
                 </li>
               </ul>
             </div>
             <div class="article-content">
-              <p>
-                Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Cras ultricies ligula sed magna dictum
-                porta. Quisque velit
-                nisi, pretium ut lacinia in, elementum id enim. Praesent sapien massa, convallis a pellentesque
-                nec, egestas non nisi. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere
-                cubilia Curae; Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula.
-                Nulla quis lorem ut libero malesuada feugiat.
-              </p>
-              <p>
-                Nulla porttitor accumsan tincidunt. Cras ultricies ligula sed magna dictum porta. Mauris blandit
-                aliquet elit, eget tincidunt
-                nibh pulvinar a. Cras ultricies ligula sed magna dictum porta. Lorem ipsum dolor sit amet,
-                consectetur adipiscing elit. Donec sollicitudin molestie malesuada.
-              </p>
-              <p>
-                Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Lorem ipsum dolor sit amet, consectetur
-                adipiscing elit. Praesent
-                sapien massa, convallis a pellentesque nec, egestas non nisi. Lorem ipsum dolor sit amet,
-                consectetur adipiscing elit. Curabitur arcu erat, accumsan id imperdiet et, porttitor at
-                sem. Donec rutrum congue leo eget malesuada.
-              </p>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis lorem ut libero malesuada feugiat.
-                Curabitur arcu erat,
-                accumsan id imperdiet et, porttitor at sem. Vivamus suscipit tortor eget felis porttitor
-                volutpat. Vivamus suscipit tortor eget felis porttitor volutpat. Quisque velit nisi, pretium
-                ut lacinia in, elementum id enim.
-              </p>
-              <blockquote class="blockquote">
-                <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-              </blockquote>
-              <p>
-                Nulla porttitor accumsan tincidunt. Cras ultricies ligula sed magna dictum porta. Mauris blandit
-                aliquet elit, eget tincidunt
-                nibh pulvinar a. Cras ultricies ligula sed magna dictum porta. Lorem ipsum dolor sit amet,
-                consectetur adipiscing elit. Donec sollicitudin molestie malesuada.
-              </p>
+              <?php echo $post['content']; ?>
             </div>
           </div>
           <div class="box-comments" id="comments">
             <div class="title-box-2">
-              <h4 class="title-comments title-left">Comentarios (<span class="fb-comments-count" data-href="https://digitable.com.mx/home/blog-single.html"></span>)</h4>
+              <h4 class="title-comments title-left">Comentarios (<span class="fb-comments-count" data-href="https://digitable.com.mx/home/blog.php?href=<?php echo $href;?>"></span>)</h4>
             </div>
-            <div class="fb-comments" data-href="https://digitable.com.mx/home/blog-single.html" data-width="" data-numposts="5"></div>
+            <div class="fb-comments" data-href="https://digitable.com.mx/home/blog.php?href=<?php echo $href;?>" data-width="" data-numposts="5"></div>
           </div>
         </div>
         <div class="col-md-4">

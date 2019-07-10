@@ -39,201 +39,29 @@
 </head>
 
 <?php
+  include_once "controllers/main_ctrlr.php";
+
+  function displayTime($timestampdiff) {
+    if ($timestampdiff < 60) {
+      return $timestampdiff."m";
+    }
+    if ($timestampdiff < 60*24) {
+      return floor($timestampdiff / 60)."h";
+    }
+    if ($timestampdiff < 60*24*7) {
+      return floor($timestampdiff / (60*24))."d";
+    }
+    return floor($timestampdiff / (60*24*7))."w";
+  }
+
+  $posts = getMainPosts();
+
   if (!isset($_GET['lang'])) {
     $lang = 'ES';
   } else {
     $lang = $_GET['lang'];
   }
-  switch($lang) {
-    case 'EN':
-    $titles = array(
-      "home"=>"Home",
-      "about"=>"About me",
-      "services"=>"Services",
-      "blog"=>"Blog",
-      "contact"=>"Contact",
-      "portfolio" => "DevFolio",
-      "message_me" => "Send message"
-    );
-    $labels = array(
-      "name" => "Name",
-      "profile" => "Profile",
-      "email" => "Email",
-      "phone" => "Phone",
-      "skills" => "Skills",
-      "service_1" => "Web Development",
-      "service_2" => "App Development",
-      "service_3" => "UX Design",
-      "service_4" => "E-Commerce",
-      "service_5" => "Software Consulting",
-      "service_6" => "Database Development",
-      "achievement_1" => "Projects Completed",
-      "achievement_2" => "Years of Experience",
-      "achievement_3" => "Git Contributions",
-      "achievement_4" => "Apps Published",
-      "your_name" => "Your name",
-      "your_email" => "Your email",
-      "subject" => "Subject",
-      "message" => "Message",
-      "your_name_validation" => "Please enter at least 4 characters",
-      "your_email_validation" => "Please enter a valid email",
-      "subject_validation" => "Please enter at least 8 characters",
-      "message_validation" => "Please enter your message",
-      "send_message" => "Send message",
-      "message_sent" => "Thank you! I will be contacting you soon"
-    );
-    $texts = array(
-      "name" => "Roberto H. Pérez",
-      "profile" => "Full Stack Developer",
-      "email" => "roberto@digitable.com.mx",
-      "phone" => "(55) 7671 2560",
-      "address" => "Marina Nacional 200, Miguel Hidalgo, CDMX",
-      "about_me_p1" => "I am a full stack web and app developer, with more than 5 years of experience providing services for the public and private sectors.",
-      "about_me_p2" => "I have been actively involved in a large amount of diverse projects, including management systems, payroll accounting, geolocation mobile native and hybrid apps, online payment stores and data analysis systems, among others.",
-      "about_me_p3" => "I have also worked as a software consultant, helping organizations to make decicions concerning to their information systems.",
-      "about_me_p4" => "I have great experience implementing agile development methods in work teams, and using version control and cooperative tools.",
-      "service_1" => "Full-stack web-based application development. Website launching. Web Services implementation and integration.",
-      "service_2" => "Full-stack native and hybrid mobile applications, ready to publish on digital distribution platforms.",
-      "service_3" => "Design and redesign of responsive, functional visual interfaces, focused on granting the best user experience.",
-      "service_4" => "WordPress/WooCommerce online stores development and improvement. Online payment services integration.",
-      "service_5" => "Analysis, correction and maintenance of pre-existing systems and processes. Vulnerability and growth opportunity detection.",
-      "service_6" => "Design, development and maintenance of relational database systems. Database normalization and cleansing.",
-      "contact" => "Have a project in mind? Let's get a coffee and discuss your ideas.",
-    );
-    $posts = array(
-      array(
-        "title"=>"¿Son tus contraseñas seguras?",
-        "description"=>"El robo de identidades digitales está a la orden del día. Probablemente en alguna ocasión te ha llegado un mensaje a la bandeja de spam de tu correo diciéndote que conocen tu contraseña, e incluso te la muestran. ¿Te has preguntado cómo pasó?",
-        "category"=>"Seguridad",
-        "author"=>"Roberto",
-        "date"=>"3 días",
-        "imgsrc"=>"img/post-1.jpg",
-      ),
-      array(
-        "title"=>"Error 404! Engagement not found",
-        "description"=>"Está permitido tener errores. Lo que no está permitido, es no estar preparado para manejarlos. A nadie le gusta navegar por un sitio, y de repente ver una fea página de error que acaba con la experiencia de usuario.",
-        "category"=>"Web Design",
-        "author"=>"Roberto",
-        "date"=>"2 sem",
-        "imgsrc"=>"img/post-2.jpg",
-      ),
-      array(
-        "title"=>"Seguridad y comercio en línea",
-        "description"=>"Realizar compras en línea es una actividad cada vez más común. Sin embargo, también abundan los intentos de fraude, robo de identidad y de datos bancarios.",
-        "category"=>"Seguridad",
-        "author"=>"Roberto",
-        "date"=>"3 sem",
-        "imgsrc"=>"img/post-3.jpg",
-      ),
-    );
-    break;
-    case 'ES':
-    default:
-    $lang = 'ES';
-    $titles = array(
-      "home"=>"Inicio",
-      "about"=>"Acerca de mí",
-      "services"=>"Servicios",
-      "blog"=>"Blog",
-      "contact"=>"Contacto",
-      "portfolio" => "DevFolio",
-      "message_me" => "Envíame un mensaje"
-    );
-    $labels = array(
-      "name" => "Nombre",
-      "profile" => "Perfil",
-      "email" => "Email",
-      "phone" => "Teléfono",
-      "skills" => "Habilidades",
-      "service_1" => "Desarrollo Web",
-      "service_2" => "Desarrollo Móvil",
-      "service_3" => "Diseño UX",
-      "service_4" => "Comercios en Línea",
-      "service_5" => "Consultoría en Sistemas",
-      "service_6" => "Desarrollo DB",
-      "achievement_1" => "Proyectos Completados",
-      "achievement_2" => "Años de Experiencia",
-      "achievement_3" => "Contribuciones",
-      "achievement_4" => "Apps Publicadas",
-      "your_name" => "Tu nombre",
-      "your_email" => "Tu email",
-      "subject" => "Asunto",
-      "message" => "Mensaje",
-      "your_name_validation" => "Por favor, introduce al menos 4 caracteres",
-      "your_email_validation" => "Por favor, introduce una dirección de email válida",
-      "subject_validation" => "Por favor, introduce al menos 8 caracteres",
-      "message_validation" => "Por favor, introduce tu mensaje",
-      "send_message" => "Enviar",
-      "message_sent" => "¡Muchas gracias! Pronto me pondré en contacto contigo."
-    );
-    $texts = array(
-      "name" => "Roberto H. Pérez",
-      "profile" => "Desarrollador Full Stack",
-      "email" => "roberto@digitable.com.mx",
-      "phone" => "(55) 7671 2560",
-      "address" => "Marina Nacional 200, Miguel Hidalgo, CDMX",
-      "about_me_p1" => "Soy un desarrollador full stack de sistemas y aplicaciones web y móviles, con más de 5 años de experiencia desempeñándome tanto en instituciones públicas como en la iniciativa privada.",
-      "about_me_p2" => "He participado activamente en una gran cantidad y diversidad de proyectos que incluyen sistemas de gestión interna, cálculo de nómina, aplicaciones móviles con funciones de geolocalización, tiendas con pagos en línea y sistemas de análisis de información, entre otros.",
-      "about_me_p3" => "Me he desempeñado además como consultor de software, ayudando a organizaciones en la toma de decisiones con respecto a sistemas de información.",
-      "about_me_p4" => "Cuento con gran experiencia en la implementación de metodologías ágiles en equipos de trabajo, y en el manejo de herramientas de colaboración y de control de versiones.",
-      "service_1" => "Desarrollo de aplicaciones basadas en web. Levantamiento de sitios. Integración de Web Services.",
-      "service_2" => "Desarrollo full-stack de aplicaciones móviles nativas e híbridas, listas para su distribución en plataformas digitales.",
-      "service_3" => "Diseño y rediseño de interfaces visuales responsivas y funcionales, orientadas a ofrecer la mejor experiencia de usuario.",
-      "service_4" => "Desarrollo y mejoramiento de comercios basados en WordPress/WooCommerce. Integración de diversos servicios de pagos en línea.",
-      "service_5" => "Análisis, corrección y mantenimiento de sistemas y procesos existentes. Detección de vulnerabilidades y oportunidades de crecimiento.",
-      "service_6" => "Diseño, desarrollo e implementación de sistemas de bases de datos relacionales. Normalización y saneamiento de bases de datos ya existentes.",
-      "contact" => "¿Tienes un proyecto en mente? Tomemos un café y discutamos tus ideas.",
-    );
-    $posts = array(
-      array(
-        "title"=>"¿Son tus contraseñas seguras?",
-        "description"=>"El robo de identidades digitales está a la orden del día. Probablemente en alguna ocasión te ha llegado un mensaje a la bandeja de spam de tu correo diciéndote que conocen tu contraseña, e incluso te la muestran. ¿Te has preguntado cómo pasó?",
-        "category"=>"Seguridad",
-        "author"=>"Roberto",
-        "date"=>"3 días",
-        "imgsrc"=>"img/post-1.jpg",
-      ),
-      array(
-        "title"=>"Error 404: Engagement not found!",
-        "description"=>"Está permitido tener errores. Lo que no está permitido es no estar preparado para manejarlos. A nadie le gusta navegar por un sitio, y encontrarte con una página de error que acaba con la experiencia de usuario.",
-        "category"=>"Web Design",
-        "author"=>"Roberto",
-        "date"=>"2 sem",
-        "imgsrc"=>"img/post-2.jpg",
-      ),
-      array(
-        "title"=>"Seguridad y comercio en línea",
-        "description"=>"Realizar compras en línea es una actividad cada vez más común. Sin embargo, también abundan los intentos de fraude, robo de identidad y de datos bancarios. Aprende a navegar en las tiendas de manera segura.",
-        "category"=>"Seguridad",
-        "author"=>"Roberto",
-        "date"=>"3 sem",
-        "imgsrc"=>"img/post-3.jpg",
-      ),
-    );
-    break;
-  }
-  $skills = array(
-    array("PHP", 95),
-    array("HTML5/CSS3/Bootstrap", 80),
-    array("JS/jQuery/Ajax", 85),
-    array("Java/Android", 90),
-    array("WordPress/WooCommerce", 85),
-    array("Laravel/React", 75),
-    array("Angular/Ionic/Cordova", 80),
-    array("MySQL/PostgreSQL/Oracle", 95),
-    array("Node.js", 75),
-    array("Linux Servers", 85),
-  );
-
-  $contact = array(
-    "phone" => array("(55) 7671 2560", "tel:5576712560"),
-    "email" => array("roberto@digitable.com.mx", "mailto:roberto@digitable.com.mx"),
-    "whatsapp" => array("+52 1 (55) 7671 2560", "https://wa.me/+5215576712560"),
-    "linkedin" => array("linkedin.com/in/rhperez/", "https://www.linkedin.com/in/rhperez/"),
-    "facebook" => array("facebook.com/robertohciencias", "https://www.facebook.com/robertohciencias"),
-    "instagram" => array("instagram.com/robertsfoobar", "https://www.instagram.com/robertsfoobar"),
-    "github" => array("github.com/rhperez", "https://github.com/rhperez"),
-  );
+  include_once "lang/lang.php";
  ?>
 
 <body id="page-top">
@@ -679,93 +507,41 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-md-4">
-          <div class="card card-blog">
-            <div class="card-img">
-              <a href="blog-single.html"><img src="<?php echo $posts[0]['imgsrc'];?>" alt="" class="img-fluid"></a>
-            </div>
-            <div class="card-body">
-              <div class="card-category-box">
-                <div class="card-category">
-                  <h6 class="category"><?php echo $posts[0]['category'];?></h6>
+        <?php
+          foreach ($posts as $post) {
+            ?>
+            <div class="col-md-4">
+              <div class="card card-blog">
+                <div class="card-img">
+                  <a href="blog.php?title=<?php echo $post['href'];?>"><img src="<?php echo $post['imgsrc'];?>" alt="" class="img-fluid"></a>
+                </div>
+                <div class="card-body">
+                  <div class="card-category-box">
+                    <div class="card-category">
+                      <h6 class="category"><?php echo $post['tag'];?></h6>
+                    </div>
+                  </div>
+                  <h3 class="card-title"><a href="blog.php?title=<?php echo $post['href'];?>"><?php echo $post['title'];?></a></h3>
+                  <p class="card-description">
+                    <?php echo $post['description'];?>
+                  </p>
+                </div>
+                <div class="card-footer">
+                  <div class="post-author">
+                    <a href="#">
+                      <img src="img/testimonial-2.jpg" alt="" class="avatar rounded-circle">
+                      <span class="author"><?php echo $post['author'];?></span>
+                    </a>
+                  </div>
+                  <div class="post-date" data-toggle="tooltip" data-placement="top" title="<?php echo $post['created_at'];?>">
+                    <span class="ion-ios-clock-outline"></span> <?php echo displayTime($post['timestampdiff']);?>
+                  </div>
                 </div>
               </div>
-              <h3 class="card-title"><a href="blog-single.html"><?php echo $posts[0]['title'];?></a></h3>
-              <p class="card-description">
-                <?php echo $posts[0]['description'];?>
-              </p>
             </div>
-            <div class="card-footer">
-              <div class="post-author">
-                <a href="#">
-                  <img src="img/testimonial-2.jpg" alt="" class="avatar rounded-circle">
-                  <span class="author"><?php echo $posts[0]['author'];?></span>
-                </a>
-              </div>
-              <div class="post-date">
-                <span class="ion-ios-clock-outline"></span> <?php echo $posts[0]['date'];?>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card card-blog">
-            <div class="card-img">
-              <a href="blog-single.html"><img src="<?php echo $posts[1]['imgsrc'];?>" alt="" class="img-fluid"></a>
-            </div>
-            <div class="card-body">
-              <div class="card-category-box">
-                <div class="card-category">
-                  <h6 class="category"><?php echo $posts[1]['category'];?></h6>
-                </div>
-              </div>
-              <h3 class="card-title"><a href="blog-single.html"><?php echo $posts[1]['title'];?></a></h3>
-              <p class="card-description">
-                <?php echo $posts[1]['description'];?>
-              </p>
-            </div>
-            <div class="card-footer">
-              <div class="post-author">
-                <a href="#">
-                  <img src="img/testimonial-2.jpg" alt="" class="avatar rounded-circle">
-                  <span class="author"><?php echo $posts[1]['author'];?></span>
-                </a>
-              </div>
-              <div class="post-date">
-                <span class="ion-ios-clock-outline"></span> <?php echo $posts[1]['date'];?>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card card-blog">
-            <div class="card-img">
-              <a href="blog-single.html"><img src="<?php echo $posts[2]['imgsrc'];?>" alt="" class="img-fluid"></a>
-            </div>
-            <div class="card-body">
-              <div class="card-category-box">
-                <div class="card-category">
-                  <h6 class="category"><?php echo $posts[2]['category'];?></h6>
-                </div>
-              </div>
-              <h3 class="card-title"><a href="blog-single.html"><?php echo $posts[2]['title'];?></a></h3>
-              <p class="card-description">
-                <?php echo $posts[2]['description'];?>
-              </p>
-            </div>
-            <div class="card-footer">
-              <div class="post-author">
-                <a href="#">
-                  <img src="img/testimonial-2.jpg" alt="" class="avatar rounded-circle">
-                  <span class="author"><?php echo $posts[2]['author'];?></span>
-                </a>
-              </div>
-              <div class="post-date">
-                <span class="ion-ios-clock-outline"></span> <?php echo $posts[2]['date'];?>
-              </div>
-            </div>
-          </div>
-        </div>
+            <?php
+          }
+        ?>
       </div>
     </div>
   </section>
@@ -963,6 +739,12 @@
 
   <!-- Template Main Javascript File -->
   <script src="js/main.js"></script>
+
+  <script>
+    $(function () {
+      $('[data-toggle="tooltip"]').tooltip()
+    })
+  </script>
 
 </body>
 </html>
