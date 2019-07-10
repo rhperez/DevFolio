@@ -934,7 +934,7 @@
         <div class="row">
           <div class="col-sm-12">
             <div class="copyright-box">
-              <p class="copyright">&copy; Copyright <strong>Digitable</strong>. Todos los derechos reservados.</p>
+              <p class="copyright">&copy; Copyright <strong>Digitable</strong>. Todos los derechos reservados. <a href="https://digitable.com.mx/privacy/index.html" target="_blank"><strong>Aviso de privacidad</strong></a></p>
 
             </div>
           </div>

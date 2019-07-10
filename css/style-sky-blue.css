@@ -1079,6 +1079,10 @@ footer {
   padding-bottom: 4rem;
 }
 
+footer .copyright a {
+  color: #fff;
+}
+
 footer .copyright {
   margin-bottom: .3rem;
 }
